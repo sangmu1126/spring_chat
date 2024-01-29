@@ -1,0 +1,36 @@
+{
+  "analysis": {
+    "tokenizer": {
+      "my_nori_tokenizer": {
+        "type": "nori_tokenizer",
+        "decompound_mode": "mixed",
+        "discard_punctuation": "true",
+        "user_dictionary": "user_dic.txt"
+      },
+      "my_ngram_tokenizer": {
+        "type": "ngram",
+        "min_gram": 2,
+        "max_gram": 3
+      }
+    },
+    "analyzer": {
+      "my_nori_analyzer": {
+        "type": "custom",
+        "tokenizer": "my_nori_tokenizer",
+        "filter": ["nori_readingform", "lowercase", "synonym", "stop", "trim"]
+      },
+      "my_ngram_analyzer": {
+        "type": "custom",
+        "tokenizer": "my_ngram_tokenizer",
+        "filter": ["lowercase", "synonym", "stop", "trim"],
+        "char_filter": ["html_strip"]
+      }
+    },
+    "filter": {
+      "synonym": {
+        "type": "synonym_graph",
+        "synonyms_path": "synonyms.txt"
+      }
+    }
+  }
+}

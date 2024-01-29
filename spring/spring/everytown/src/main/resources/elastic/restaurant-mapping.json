@@ -1,0 +1,157 @@
+{
+  "properties" : {
+    "id": {
+      "type" : "keyword"
+    },
+    "name": {
+      "type": "text",
+      "similarity": "BM25",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      },
+      "analyzer": "my_nori_analyzer"
+    },
+    "category_large_code": {
+      "type" : "keyword"
+    },
+    "category_large_name": {
+      "type" : "text",
+      "analyzer": "standard",
+      "search_analyzer": "standard",
+      "fields": {
+        "nori": {
+          "type": "text",
+          "analyzer": "my_nori_analyzer",
+          "search_analyzer": "my_nori_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "my_ngram_analyzer",
+          "search_analyzer": "my_ngram_analyzer"
+        }
+      }
+    },
+    "category_middle_code": {
+      "type" : "keyword"
+    },
+    "category_middle_name": {
+      "type" : "text",
+      "analyzer": "standard",
+      "search_analyzer": "standard",
+      "similarity": "BM25",
+      "boost": "0.5",
+      "fields": {
+        "nori": {
+          "type": "text",
+          "analyzer": "my_nori_analyzer",
+          "search_analyzer": "my_nori_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "my_ngram_analyzer",
+          "search_analyzer": "my_ngram_analyzer"
+        }
+      }
+    },
+    "category_small_code": {
+      "type" : "keyword"
+    },
+    "category_small_name": {
+      "type" : "text",
+      "analyzer": "standard",
+      "search_analyzer": "standard",
+      "similarity": "BM25",
+      "boost": "0.5",
+      "fields": {
+        "nori": {
+          "type": "text",
+          "analyzer": "my_nori_analyzer",
+          "search_analyzer": "my_nori_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "my_ngram_analyzer",
+          "search_analyzer": "my_ngram_analyzer"
+        }
+      }
+    },
+    "menu_names": {
+      "type" : "text",
+      "analyzer": "my_nori_analyzer",
+      "search_analyzer": "my_nori_analyzer",
+      "similarity": "BM25"
+    },
+    "menu": {
+      "type": "nested",
+      "properties": {
+        "id": {
+          "type": "keyword"
+        },
+        "name": {
+          "type": "text",
+          "analyzer": "standard",
+          "search_analyzer": "standard",
+          "fields": {
+            "nori": {
+              "type": "text",
+              "analyzer": "my_nori_analyzer",
+              "search_analyzer": "my_nori_analyzer"
+            },
+            "ngram": {
+              "type": "text",
+              "analyzer": "my_ngram_analyzer",
+              "search_analyzer": "my_ngram_analyzer"
+            }
+          }
+        },
+        "price": {
+          "type": "long"
+        }
+      }
+    },
+    "review_contents": {
+      "type" : "text",
+      "analyzer": "my_nori_analyzer",
+      "search_analyzer": "my_nori_analyzer"
+    },
+    "review": {
+      "type": "nested",
+      "properties": {
+        "id": {
+          "type": "keyword"
+        },
+        "nickname": {
+          "type": "keyword"
+        },
+        "rating": {
+          "type": "integer"
+        },
+        "content": {
+          "type": "text",
+          "similarity": "BM25",
+          "analyzer": "my_nori_analyzer"
+        }
+      }
+    },
+    "dong": {
+      "type" : "text",
+      "analyzer": "my_nori_analyzer"
+    },
+    "address": {
+      "type" : "text",
+      "analyzer": "my_nori_analyzer"
+    },
+    "location": {
+      "type":"geo_point"
+    },
+    "modified_at": {
+      "type": "date"
+    },
+    "created_at": {
+      "type": "date"
+    }
+  }
+}

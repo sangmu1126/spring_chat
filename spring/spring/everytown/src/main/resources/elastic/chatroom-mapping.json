@@ -1,0 +1,50 @@
+{
+  "properties" : {
+    "id": {
+      "type" : "keyword"
+    },
+    "name": {
+      "type": "text",
+      "similarity": "BM25",
+      "fields": {
+        "nori": {
+          "type": "text",
+          "analyzer": "my_nori_analyzer",
+          "search_analyzer": "my_nori_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "my_ngram_analyzer",
+          "search_analyzer": "my_ngram_analyzer"
+        }
+      }
+    },
+    "member_id": {
+      "type": "keyword"
+    },
+    "nickname": {
+      "type" : "keyword"
+    },
+    "tag": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "location": {
+      "type":"geo_point"
+    },
+    "modified_at": {
+      "type": "date"
+    },
+    "created_at": {
+      "type": "date"
+    },
+    "address": {
+      "type": "keyword"
+    }
+  }
+}
